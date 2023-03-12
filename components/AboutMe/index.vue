@@ -2,7 +2,7 @@
   <div class="laptop:translate-y-2/4 tablet:mt-20">
     <div class="container flex-col tablet:flex-row mx-auto flex justify-between items-center gap-5">
       <div class="flex flex-col gap-5 text-left">
-        <div class="text-4xl laptop:text-8xl">Zhuldyz Namazbayeva</div>
+        <div class="text-4xl laptop:text-7xl">Zhuldyz Namazbayeva</div>
         <div class="text-3xl text-gray-500 laptop:text-4xl">Frontend Developer</div>
         <div class="text-lg text-violetish laptop:text-xl">Hello! Who is the greates in this world!</div>
       </div>
