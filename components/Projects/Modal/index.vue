@@ -32,11 +32,11 @@
                 as="h3"
                 class="text-lg font-medium leading-6 text-gray-900"
               >
-                Project name
+                {{ currentProject?.name }}
               </DialogTitle>
               <div class="mt-2">
                 <p class="text-sm text-gray-500">
-                  Hello, I have successfully finished this project
+                  {{ currentProject?.description }}
                 </p>
               </div>
 
@@ -64,7 +64,9 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue'
+import { Project } from '~/types/index'
 const props = defineProps<{
-  isOpen: boolean
+  isOpen: boolean,
+  currentProject: Project | null
 }>()
 </script>

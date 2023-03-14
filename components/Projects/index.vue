@@ -3,25 +3,33 @@
     <div class="container mx-auto">
       <div class="flex flex-wrap flex-row gap-8 justify-between">
         <ProjectsProject 
-        v-for="i in 9" :key="i" 
-        :background-color="backgroundColors[i-1]"
-        @click="openModal()"
+        v-for="(project, i) in projects" :key="i" 
+        :background-color="backgroundColors[i % 9]"
+        :project="project"
+        @click="openModal(i)"
         /> 
       </div>
     </div>
-    <ProjectsModal :is-open="isOpen" @closeModal="closeModal" />
+    <ProjectsModal :current-project="currentProject" :is-open="isOpen" @closeModal="closeModal" />
   </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+import { Project } from '~/types/index'
 
-const isOpen = ref(false)
+const isOpen = ref<boolean>(false)
+const currentProject = ref<Project | null>(null)
+
+const projects = ref<Project[] | null>(null);
+const { result } =  await myFetch<Project[] >('projects') ;
+projects.value = result.value 
 
 function closeModal() {
   isOpen.value = false
 }
-function openModal() {
+function openModal(i : number) {
   isOpen.value = true
+  currentProject.value = projects.value && projects.value[i]
 }
 const backgroundColors: Array<string>= [
   'bg-orange-600', 

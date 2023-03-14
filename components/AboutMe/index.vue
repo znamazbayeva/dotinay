@@ -2,9 +2,9 @@
   <div class="laptop:translate-y-2/4 tablet:mt-20">
     <div class="container flex-col tablet:flex-row mx-auto flex justify-between items-center gap-5">
       <div class="flex flex-col gap-5 text-left">
-        <div class="text-4xl laptop:text-7xl">{{ me.name }}</div>
-        <div class="text-3xl text-gray-500 laptop:text-4xl">{{ me.occupation }}</div>
-        <div class="text-lg text-violetish laptop:text-xl">{{ me.intro }}</div>
+        <div class="text-4xl laptop:text-7xl">{{ me?.name }}</div>
+        <div class="text-3xl text-gray-500 laptop:text-4xl">{{ me?.occupation }}</div>
+        <div class="text-lg text-violetish laptop:text-xl">{{ me?.intro }}</div>
       </div>
       <div class="flex w-80 h-80 tablet:w-full tablet:flex-[0_0_30%] fill-violetish p-4">
         <svg viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -19,7 +19,7 @@
                 165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
                 129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
                 -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
-            <image class="w-full h-full" :href="me.photo"/>
+            <image class="w-full h-full" :href="me?.photo"/>
           </g>
         </svg>
       </div>
@@ -27,31 +27,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-interface Me {
-  id?: number,
-  name?: string,
-  occupation?: string,
-  intro?: string,
-  photo?: string,
-}
-const me = ref({} as Me)
-const getMeInfo = async () => {
-  // fetch username from github api
-  try {
-    const response = await fetch(
-      `http://86.107.44.116/api/me/`
-    )
-    if (response.status !== 200)
-      throw new Error(
-        `error when fetching username : ${response.statusText} (${response.status})`
-      )
-      const data = await response.json();
-      type ReturnValue = Awaited<ReturnType<typeof data>>;
-        me.value = data[0]
-  } catch (err) {
-   console.log(err);
-   
-  }
-}
-getMeInfo()
+import { Me } from '~/types/index'
+const me = ref<Me | null>(null);
+const { result } =  await myFetch<Me[]>('me') ;
+me.value = result.value && result.value[0]
 </script>
