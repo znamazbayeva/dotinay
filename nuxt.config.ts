@@ -7,5 +7,9 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  pages: true
+  pages: true,
+  // auto import components
+  components: true,
+  // server side rendering mode
+  ssr: true,
 })
