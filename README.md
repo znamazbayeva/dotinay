@@ -6,10 +6,10 @@ Tools:
 TODO:
 - [X] add about me page
 - [ ] add social media icons near my name
-- [ ] add data from backend
+- [X] add data from backend
 - [X] projects page layout
-- [ ] single project modal
-- [ ] blog page layout
-- [ ] single post page layout
+- [X] single project modal
+- [X] blog page layout
+- [X] single post page layout
 - [ ] search bar with automatic filling 
 - [ ] categories
