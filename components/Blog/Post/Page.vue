@@ -12,6 +12,9 @@
 import { computed  } from 'vue'
 import { useRoute } from 'vue-router'
 import { Post } from '~/types/index'
+import 'highlight.js/lib/common';
+import javascript from 'highlight.js/lib/languages/javascript';
+import hljs from 'highlight.js'
 
 const post = ref<Post | null>(null);
 const route  = useRoute()
@@ -22,6 +25,9 @@ const postId = computed(() => {
 const { result } =  await myFetch<Post>(`posts/${unref(postId)}`) ;
 post.value = result.value 
 
-
+onMounted(() => {
+  hljs.registerLanguage('javascript', javascript);
+  hljs.highlightAll()
+})
 
 </script>
