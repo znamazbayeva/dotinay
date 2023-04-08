@@ -1,6 +1,6 @@
 <template>
   <div class="my-20">
-    <div class="container mx-auto">
+    <div class="container mx-auto dark:text-white">
       <img :src="post?.photo" alt="post photo" />
       <div>{{ post?.title }}</div>
       <div>{{ post?.subtitle }}</div>

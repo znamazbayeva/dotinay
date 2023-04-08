@@ -2,7 +2,7 @@
   <div class="flex-1 flex flex-col">
     <div class="max-w-2xl w-full py-12 px-4 mx-auto">
       <div class="mt-8 dark:text-white max-w-none">
-        <div v-html="me?.content"></div>
+        <div class="ck-content" v-html="me?.content"></div>
       </div>
     </div>
   </div>
