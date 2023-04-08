@@ -34,10 +34,10 @@
           </li>
           <li>
             <a
-              href="/youtube"
+              href="/books"
               class="font-medium py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent"
             >
-              Youtube
+              Books
             </a>
           </li>
         </ul>
