@@ -7,6 +7,9 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  modules: [
+    '@vueuse/nuxt',
+  ],
   pages: true,
   // auto import components
   components: true,
