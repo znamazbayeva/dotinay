@@ -14,6 +14,7 @@ export  interface Me {
   occupation?: string,
   intro?: string,
   photo?: string,
+  content: string,
 }
 
 export interface Post {
