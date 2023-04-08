@@ -12,21 +12,15 @@
             </div>
             <nav class="px-4 text-right">
                 <ul class="flex flex-col gap-6">
-                        <li>
-                            <a href="/about" class="font-medium text-xl py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent">
-                                About
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/blog" class="font-medium text-xl py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent">
-                                Articles
-                            </a>
-                        </li>
-                         <li>
-                            <a href="/projects" class="font-medium text-xl py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent">
-                                Projects
-                            </a>
-                        </li>  
+                  <li v-for="(tab, i) in tabs" :key="i">
+                    <nuxt-link
+                      :to="tab.url"
+                      @click.prevent="menu = !menu"
+                      class="font-medium py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent"
+                    >
+                      {{ tab.name }}
+                    </nuxt-link>
+                  </li>
                 </ul>
             </nav>
     </div>
@@ -39,38 +33,14 @@
       </div>
       <nav class="hidden sm:block flex-1">
         <ul class="flex justify-center gap-6">
-          <li>
-            <a
-              href="/about"
+          <li v-for="(tab, i) in tabs" :key="i">
+            <nuxt-link
+              :to="tab.url"
               class="font-medium py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent"
             >
-              About
-            </a>
+              {{ tab.name }}
+            </nuxt-link>
           </li>
-          <li>
-            <a
-              href="/blog"
-              class="font-medium py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent"
-            >
-              Articles
-            </a>
-          </li>
-          <li>
-            <a
-              href="/projects"
-              class="font-medium py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent"
-            >
-              Projects
-            </a>
-          </li>
-          <!-- <li>
-            <a
-              href="/books"
-              class="font-medium py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent"
-            >
-              Books
-            </a>
-          </li> -->
         </ul>
       </nav>
       <div class="flex-1 flex gap-4 items-center justify-end">
@@ -137,7 +107,27 @@
 <script lang="ts" setup>
 import { useDark, useToggle } from "@vueuse/core";
 
+interface tab {
+  name: string,
+  url: string
+}
+
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 let menu = ref<boolean>(false);
+
+const tabs = ref<tab[]>([
+  {
+    name: 'About',
+    url: '/about'
+  },
+  {
+    name: 'Articles',
+    url: '/blog'
+  },
+  {
+    name: 'Projects',
+    url: '/projects'
+  },
+])
 </script>
