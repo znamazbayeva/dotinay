@@ -4,7 +4,7 @@
       <img :src="post?.photo" alt="post photo" />
       <div>{{ post?.title }}</div>
       <div>{{ post?.subtitle }}</div>
-      <div v-html="post?.content"></div>
+      <div class="ck-content" v-html="post?.content"></div>
     </div>
   </div>
 </template>

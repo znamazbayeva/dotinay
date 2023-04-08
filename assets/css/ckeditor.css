@@ -24,7 +24,7 @@
 
 /* @ckeditor/ckeditor5-basic-styles/theme/code.css */
 .ck-content code {
-  background-color: hsla(0, 0%, 78%, 0.3);
+  background-color: hsla(0, 0%, 0%, 0.3);
   padding: .15em;
   border-radius: 2px;
 }
@@ -427,7 +427,7 @@
 .ck-content pre {
   padding: 1em;
   color: hsl(0, 0%, 20.8%);
-  background: hsla(0, 0%, 78%, 0.3);
+  background: hsla(0, 0%, 0%, 1);
   border: 1px solid hsl(0, 0%, 77%);
   border-radius: 2px;
   text-align: left;
@@ -436,12 +436,13 @@
   white-space: pre-wrap;
   font-style: normal;
   min-width: 200px;
+  border-radius: 8px;
 }
 /* @ckeditor/ckeditor5-code-block/theme/codeblock.css */
 .ck-content pre code {
   background: unset;
   padding: 0;
-  border-radius: 0;
+  border-radius: 10px;
 }
 /* @ckeditor/ckeditor5-mention/theme/mention.css */
 .ck-content .mention {
