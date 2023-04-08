@@ -32,14 +32,14 @@
               Projects
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a
               href="/books"
               class="font-medium py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent"
             >
               Books
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <div class="flex-1 flex gap-4 items-center justify-end">

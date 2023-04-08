@@ -6,7 +6,7 @@
           Projects I have worked on
         </h1>
       </div>
-      <section class="mt-12 space-y-16">
+      <section class="mt-12 space-y-16 dark:text-white">
         <ProjectsProject
           v-for="(project, i) in projects"
           :key="i"
