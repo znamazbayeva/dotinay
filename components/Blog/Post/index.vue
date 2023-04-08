@@ -1,27 +1,31 @@
 <template>
   <div>
-    <nuxt-link :to="`/blog/${post.id}/`">
-      <div class="laptop:flex-[0_0_29%] w-full h-full shadow-lg shadow-gray-300 rounded-xl p-5 hover:cursor-pointer hover:-translate-y-2 transition-all">
-        <div class="w-full h-full flex flex-col gap-2">
-          <div class="rounded-xl">
-            <img :src="post.photo" alt="project image" class="h-52 w-full object-cover" />
-          </div>
-          <div class="flex justify-between items-center">
-            <div class="text-2xl font-semibold">{{ post.title }}</div>
-            <!-- TODO: add date -->
-            <div>August 2022</div>
-          </div>
-          <div>
-            {{ post.subtitle }}
-          </div>
-        </div>
-      </div>
-    </nuxt-link>
-    </div>
+    <article class="">
+      <p class="text-gray-500 text-sm">April 23rd, 2021</p>
+      <h2 class="mt-3 font-medium text-lg text-gray-800 dark:text-gray-200">
+        <nuxt-link
+          :to="`/blog/${post.id}/`"
+          class="hover:underline focus:underline"
+        >
+          {{ post.title }}
+        </nuxt-link>
+      </h2>
+      <p class="mt-3 text-base text-gray-500 leading-relaxed">
+        {{ post.subtitle }}
+      </p>
+      <p class="mt-3 text-base text-gray-700 dark:text-gray-300">
+        <nuxt-link
+          :to="`/blog/${post.id}/`"
+          class="hover:underline focus:underline"
+          >Read article →</nuxt-link
+        >
+      </p>
+    </article>
+  </div>
 </template>
 <script setup lang="ts">
-import { Post } from '~/types/index'
+import { Post } from "~/types/index";
 const props = defineProps<{
-  post: Post
-}>()
+  post: Post;
+}>();
 </script>

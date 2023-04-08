@@ -2,8 +2,10 @@
   <div class="flex-1 flex flex-col">
     <div class="flex-1 flex items-center justify-center">
       <div class="w-full max-w-3xl px-4 py-12">
-        <div class="mt-8 dark:prose-invert max-w-none">
-          <h1 class="font-extrabold text-5xl mb-8">{{ me?.occupation }}</h1>
+        <div class="mt-8 dark:text-white max-w-none">
+          <h1 class="font-extrabold text-5xl mb-8">
+            {{ me?.occupation }}
+          </h1>
           <p class="text-xl text-gray-500">
             {{ me?.intro }}
           </p>
