@@ -1,7 +1,7 @@
 <template>
     <div v-if="menu" :style="menu ? 'display: block;' : 'display: none;'" class="fixed inset-0 bg-white dark:bg-gray-900 z-20">
             <div class="h-20 px-4 flex items-center justify-between">
-                <a class="block h-14 w-14 relative border-2 border-white dark:border-gray-700 font-bold text-2xl opacity-60" href="/">
+                <a class="block h-14 w-14 relative dark:text-white font-bold text-2xl opacity-60" href="/">
                     Dotinay
                 </a>
                 <button @click="menu = !menu">
