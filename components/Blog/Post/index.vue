@@ -1,7 +1,7 @@
 <template>
   <div>
     <article class="">
-      <p class="text-gray-500 text-sm">April 23rd, 2021</p>
+      <p class="text-gray-500 text-sm">{{ post.created_at }}</p>
       <h2 class="mt-3 font-medium text-lg text-gray-800 dark:text-gray-200">
         <nuxt-link
           :to="`/blog/${post.id}/`"

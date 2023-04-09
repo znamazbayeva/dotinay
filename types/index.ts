@@ -24,4 +24,5 @@ export interface Post {
   content?: string,
   photo?: string, 
   me?: number,
+  created_at: string,
 }
