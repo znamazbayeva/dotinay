@@ -35,9 +35,7 @@
                 {{ currentProject?.name }}
               </DialogTitle>
               <div class="mt-2">
-                <p class="text-sm text-gray-500">
-                  {{ currentProject?.description }}
-                </p>
+                <div v-html="currentProject?.content"></div>
               </div>
 
               <div class="mt-4">

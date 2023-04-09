@@ -7,6 +7,7 @@ export  interface Project {
   url?: string,
   photo?: string,
   me?: number, 
+  content?: string,
 }
 export  interface Me {
   id?: number,
