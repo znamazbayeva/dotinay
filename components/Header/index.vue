@@ -38,7 +38,7 @@
               :to="tab.url"
               class="font-medium py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent"
               @click="currentTab = tab.url"
-              :class="currentTab === tab.url && 'underline text-black'"
+              :class="currentTab === tab.url && 'underline text-black dark:text-white'"
             >
               {{ tab.name }}
             </nuxt-link>
