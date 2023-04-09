@@ -135,6 +135,10 @@ const tabs = ref<tab[]>([
     name: 'Projects',
     url: '/projects'
   },
+  {
+    name: 'Animations',
+    url: '/animations'
+  }
 ])
 
 const currentPath = route.path

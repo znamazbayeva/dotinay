@@ -1,0 +1,3 @@
+<template>
+  <Animations></Animations>
+</template>
