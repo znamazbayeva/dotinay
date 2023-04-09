@@ -1,9 +1,12 @@
 <template>
-  <div class="my-20">
-    <div class="container mx-auto dark:text-white">
-      <img :src="post?.photo" alt="post photo" />
-      <div>{{ post?.title }}</div>
-      <div>{{ post?.subtitle }}</div>
+  <div class="flex-1 flex flex-col">
+    <div class="max-w-2xl w-full py-12 px-4 mx-auto">
+      <div class="mt-6 dark:text-white max-w-none">
+        <h1 class="font-bold text-4xl mb-8 leading-relaxed">
+          {{ post?.title }}
+        </h1>
+      </div>
+      <div class="mb-6 text-gray-500">{{ post?.subtitle }}</div>
       <div class="ck-content" v-html="post?.content"></div>
     </div>
   </div>
