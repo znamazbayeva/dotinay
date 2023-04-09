@@ -1,28 +1,28 @@
 <template>
     <div v-if="menu" :style="menu ? 'display: block;' : 'display: none;'" class="fixed inset-0 bg-white dark:bg-gray-900 z-20">
-            <div class="h-20 px-4 flex items-center justify-between">
-                <a class="block h-14 w-14 relative dark:text-white font-bold text-2xl opacity-60" href="/">
-                    Dotinay
-                </a>
-                <button @click="menu = !menu">
-                    <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <nav class="px-4 text-right">
-                <ul class="flex flex-col gap-6">
-                  <li v-for="(tab, i) in tabs" :key="i">
-                    <nuxt-link
-                      :to="tab.url"
-                      @click.prevent="menu = !menu"
-                      class="font-medium py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent"
-                    >
-                      {{ tab.name }}
-                    </nuxt-link>
-                  </li>
-                </ul>
-            </nav>
+      <div class="h-20 px-4 flex items-center justify-between">
+          <a class="block h-14 w-14 relative dark:text-white font-bold text-2xl opacity-60" href="/">
+              Dotinay
+          </a>
+          <button @click="menu = !menu">
+              <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+          </button>
+      </div>
+      <nav class="px-4 text-right">
+          <ul class="flex flex-col gap-6">
+            <li v-for="(tab, i) in tabs" :key="i">
+              <nuxt-link
+                :to="tab.url"
+                @click.prevent="menu = !menu"
+                class="font-medium py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent"
+              >
+                {{ tab.name }}
+              </nuxt-link>
+            </li>
+          </ul>
+      </nav>
     </div>
   <div
     class="h-20 flex items-center bg-white/80 dark:bg-gray-900/60 backdrop-blur-md sticky top-0 z-10"
@@ -37,6 +37,8 @@
             <nuxt-link
               :to="tab.url"
               class="font-medium py-1 hover:text-gray-900 dark:hover:text-gray-100 text-gray-500 border-transparent"
+              @click="currentTab = tab.url"
+              :class="currentTab === tab.url && 'underline text-black'"
             >
               {{ tab.name }}
             </nuxt-link>
@@ -105,7 +107,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+import {watch} from 'vue'
 import { useDark, useToggle } from "@vueuse/core";
+import { useRoute } from 'vue-router'
 
 interface tab {
   name: string,
@@ -115,6 +119,8 @@ interface tab {
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 let menu = ref<boolean>(false);
+
+const route = useRoute()
 
 const tabs = ref<tab[]>([
   {
@@ -130,4 +136,9 @@ const tabs = ref<tab[]>([
     url: '/projects'
   },
 ])
+
+const currentPath = route.path
+let currentTab = ref<string | undefined>(undefined)
+
+currentTab.value = tabs.value.find(tab => currentPath.includes(tab.url))?.url
 </script>
