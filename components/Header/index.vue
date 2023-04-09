@@ -29,7 +29,7 @@
   >
     <div class="w-full max-w-4xl px-4 mx-auto flex items-center">
       <div class="font-bold flex-1 text-3xl dark:text-white">
-        <nuxt-link to="/"> Dotinay </nuxt-link>
+        <nuxt-link to="/" @click="currentTab = undefined"> Dotinay </nuxt-link>
       </div>
       <nav class="hidden sm:block flex-1">
         <ul class="flex justify-center gap-6">
