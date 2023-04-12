@@ -6,7 +6,6 @@
 </template>
 <script setup>
 import * as THREE from 'three'
-import gsap from 'gsap'
 
 onMounted(() => {
   const scene = new THREE.Scene()
@@ -182,7 +181,7 @@ onMounted(() => {
   // OrthograpicCamera is lack of perspective the object is the same far or near
 
   window.addEventListener('mousemove', (event) => {
-    
+
   })
 
 })
