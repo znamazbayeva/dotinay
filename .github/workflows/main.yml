@@ -1,0 +1,55 @@
+name: dotinay
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16.x] 
+
+    steps:
+      - name: Git clone my repo
+        uses : actions/checkout@v1
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Remove package-lock
+        run : rm yarn.lock
+        
+      - name: Install node/modules
+        run : yarn install
+
+      - name: List files
+        run : ls -la
+        
+      - name: Build the project
+        run : yarn build
+
+      - name: Send all materials
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password:  ${{ secrets.password }}
+          port: '22'
+          source: ".nuxt,assets,layouts,static,package.json,nuxt.config.js, composables"
+          target: '/var/www/dotinay'
+
+      - name: Connect to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password:  ${{ secrets.password }}
+          port: "22"
+          script: |
+            cd /var/www/dotinay
+            yarn install
+            pm2 restart all
