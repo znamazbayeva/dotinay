@@ -40,7 +40,7 @@ jobs:
           password:  ${{ secrets.password }}
           port: '22'
           source: ".nuxt,assets,layouts,static,package.json,nuxt.config.js"
-          target: '/var/www/front'
+          target: '/var/www/dotinay'
 
       - name: Connect to server
         uses: appleboy/ssh-action@master
@@ -50,6 +50,6 @@ jobs:
           password:  ${{ secrets.password }}
           port: "22"
           script: |
-            cd /var/www/front
+            cd /var/www/dotinay
             yarn install
             pm2 restart all
