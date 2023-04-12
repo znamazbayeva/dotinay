@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  css: ['~/assets/css/main.css', 'highlight.js/styles/atom-one-dark.css'],
+  css: ['~/assets/css/main.css'],
   app: {
       head: {
           link: [{ rel: 'icon', type: 'image/png', href: '/image.png' }]

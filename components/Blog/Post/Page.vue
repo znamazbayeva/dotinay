@@ -15,9 +15,8 @@
 import { computed  } from 'vue'
 import { useRoute } from 'vue-router'
 import { Post } from '~/types/index'
-import 'highlight.js/lib/common';
-import javascript from 'highlight.js/lib/languages/javascript';
-import hljs from 'highlight.js'
+import Prism from "prismjs";
+import "prismjs/themes/prism-okaidia.css"; // you can change
 
 const post = ref<Post | null>(null);
 const route  = useRoute()
@@ -29,8 +28,8 @@ const { result } =  await myFetch<Post>(`posts/${unref(postId)}`) ;
 post.value = result.value 
 
 onMounted(() => {
-  hljs.registerLanguage('javascript', javascript);
-  hljs.highlightAll()
+    window.Prism = window.Prism || {};
+    window.Prism.manual = true;
+    Prism.highlightAll(); // highlight your code on mount
 })
-
 </script>
