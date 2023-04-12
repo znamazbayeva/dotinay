@@ -1,4 +1,4 @@
-name: qamqorlykCI
+name: dotinay
 
 on:
   push:
@@ -39,7 +39,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password:  ${{ secrets.password }}
           port: '22'
-          source: ".nuxt,assets,layouts,static,package.json,nuxt.config.js"
+          source: ".nuxt,assets,layouts,static,package.json,nuxt.config.js, composables"
           target: '/var/www/dotinay'
 
       - name: Connect to server
