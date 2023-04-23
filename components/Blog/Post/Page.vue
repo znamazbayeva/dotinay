@@ -33,3 +33,16 @@ onMounted(() => {
     Prism.highlightAll(); // highlight your code on mount
 })
 </script>
+
+<style scoped>
+  .ck-content:deep(ul)  {
+    line-height: 21px;
+    margin-bottom: 10px;
+    margin-left: 0.75em;
+    text-align: left;
+  }
+
+  .ck-content:deep(p) {
+    margin-bottom: 16px;
+  }
+</style>
