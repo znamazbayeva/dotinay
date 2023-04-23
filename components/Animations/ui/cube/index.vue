@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <div class="mb-3 font-medium text-lg text-gray-800 dark:text-gray-200">My first animations -> cube</div>
+  <div class="w-full animation">
+    <div class="mb-3 w-full font-medium text-lg text-gray-800 dark:text-gray-200">My first animations -> cube</div>
     <canvas id="root" class="webgl" ref="cube"></canvas>
   </div>
 </template>
 <script setup>
 import * as THREE from 'three'
-
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 onMounted(() => {
   const scene = new THREE.Scene()
 
@@ -54,7 +54,8 @@ onMounted(() => {
   // Quaternion
   // rotation -> in more mathematical way
 
-
+  const canvas = document.querySelector('.webgl')
+  const container = document.querySelector('.animation')
 
   // Camera -> point of view, can have multiple cameras and switch between different cameras
   // Perspective Camera -> if far -> small, near is big
@@ -63,10 +64,23 @@ onMounted(() => {
   // If big, deformations on the side
   // 2. The aspect ratio - 
   const sizes = {
-    width: 600,
-    height: 400
+    width: container.offsetWidth,
+    height: 300
   }
+
+
+
   const camera = new THREE.PerspectiveCamera(75, sizes.width/sizes.height)
+
+  window.addEventListener('resize', () => {
+    sizes.width = container.offsetWidth
+
+    //update camera
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
+    renderer.setSize(sizes.width, sizes.height)
+  })
+
   camera.position.z = 1.5
   scene.add(camera)
 
@@ -105,7 +119,6 @@ onMounted(() => {
   // Result drawn into canvas
   // Three.js wil use WebGL to render inside the canvas
 
-  const canvas = document.querySelector('.webgl')
   const renderer = new THREE.WebGLRenderer({
     canvas: canvas
   })
@@ -131,6 +144,8 @@ onMounted(() => {
 
   // Time 
   // let time = Date.now()
+  const controls = new OrbitControls(camera, canvas)
+  controls.enableDamping = true
 
   // Clock
   const clock = new THREE.Clock()
@@ -156,8 +171,8 @@ onMounted(() => {
     // mesh.rotation.y += elapsedTime * Math.PI * 2
 
     // moves in circle
-    camera.position.y = Math.sin(elapsedTime)
-    camera.position.x = Math.cos(elapsedTime)
+    // camera.position.y = Math.sin(elapsedTime)
+    // camera.position.x = Math.cos(elapsedTime)
     camera.lookAt(mesh.position)
 
     // do not use getDelta
